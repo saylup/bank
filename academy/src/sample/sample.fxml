@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #2F4F4F;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <AnchorPane layoutY="58.0" prefHeight="350.0" prefWidth="700.0" style="-fx-background-color: #fafafa;">
+         <children>
+            <Label layoutX="275.0" layoutY="59.0" text="Авторизация">
+               <font>
+                  <Font size="25.0" />
+               </font></Label>
+            <Label layoutX="229.0" layoutY="128.0" text="Логин:" />
+            <Label layoutX="225.0" layoutY="190.0" text="Пароль:" />
+            <TextField fx:id="logIn" layoutX="298.0" layoutY="124.0" promptText="Логин" />
+            <PasswordField fx:id="password" layoutX="298.0" layoutY="186.0" promptText="Пароль" />
+            <Button fx:id="btnLog" layoutX="284.0" layoutY="248.0" mnemonicParsing="false" onAction="#login" prefHeight="39.0" prefWidth="133.0" style="-fx-background-color: #A52A2A;" text="Войти" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnReg" layoutX="286.0" layoutY="298.0" mnemonicParsing="false" onAction="#registration" text="Зарегистрироваться" />
+         </children>
+      </AnchorPane>
+      <Label layoutX="8.0" layoutY="14.0" text="Самый крутой банк" textFill="#f2f2f2">
+         <font>
+            <Font name="Arial" size="30.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #2F4F4F;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Transaction">
+    <children>
+        <AnchorPane layoutY="58.0" prefHeight="350.0" prefWidth="700.0" style="-fx-background-color: #fafafa;">
+            <children>
+                <Label layoutX="300.0" layoutY="14.0" text="Перевод">
+                    <font>
+                        <Font size="25.0" />
+                    </font></Label>
+                <Label layoutX="189.0" layoutY="124.0" text="Счёт зачисления:" />
+                <Label layoutX="201.0" layoutY="81.0" text="Счёт списания:" />
+                <TextField fx:id="numOwnBill" layoutX="298.0" layoutY="77.0" prefHeight="25.0" prefWidth="157.0" promptText="Номер счёта списания" />
+                <PasswordField fx:id="numBill" layoutX="298.0" layoutY="120.0" prefHeight="25.0" prefWidth="157.0" promptText="Номер счёта зачисления" />
+                <Button fx:id="butTransaction" layoutX="310.0" layoutY="222.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="133.0" style="-fx-background-color: #A52A2A;" text="Перевести" textFill="WHITE">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+            <Button fx:id="btnBack" layoutX="14.0" layoutY="299.0" mnemonicParsing="false" onAction="#backToOffice" style="-fx-background-color: #A52A2A;" text="Назад" textFill="WHITE" />
+            <Label layoutX="245.0" layoutY="167.0" text="Сумма:" />
+            <TextField fx:id="sumTransaction" layoutX="298.0" layoutY="163.0" prefHeight="25.0" prefWidth="157.0" promptText="Сумма к списанию" />
+            </children>
+        </AnchorPane>
+        <Label layoutX="8.0" layoutY="14.0" text="Самый крутой банк" textFill="#f2f2f2">
+            <font>
+                <Font name="Arial" size="30.0" />
+            </font>
+        </Label>
+    </children>
+</AnchorPane>
