@@ -1,19 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #2F4F4F;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Maps">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2F4F4F;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Maps">
     <children>
-        <AnchorPane layoutY="58.0" prefHeight="350.0" prefWidth="700.0" style="-fx-background-color: #fafafa;">
+        <AnchorPane layoutY="58.0" prefHeight="350.0" prefWidth="600.0" style="-fx-background-color: #fafafa;">
             <children>
-                <Label layoutX="216.0" layoutY="14.0" text="Банкоматы поблизости">
+                <Label layoutX="166.0" layoutY="14.0" text="Банкоматы поблизости">
                     <font>
                         <Font size="25.0" />
                     </font>
             </Label>
                 <Button fx:id="btnBack" layoutX="14.0" layoutY="290.0" mnemonicParsing="false" onAction="#backToOffice" prefHeight="19.0" prefWidth="66.0" style="-fx-background-color: #A52A2A;" text="Назад" textFill="WHITE" />
+                <Button fx:id="btnLoad" layoutX="208.0" layoutY="290.0" mnemonicParsing="false" onAction="#openHtml" prefHeight="25.0" prefWidth="184.0" style="-fx-background-color: #A52A2A;" text="Открыть карту в браузере" textFill="WHITE" />
+            <TextArea id="8" fx:id="adress" editable="false" layoutX="20.0" layoutY="50.0" prefHeight="224.0" prefWidth="561.0" text="1) ул. Академическая, 5Г, Иркутск, Иркутская обл., Россия, 664017&#10;2) ул. Седова, 29, Иркутск, Иркутская обл., Россия, 664003&#10;3) ул. Декабрьских Событий, 106, Иркутск, Иркутская обл., Россия, 664007&#10;4) Проходной (Лесной) пр, 31, Иркутск, Иркутская обл., Россия, 664078 &#10;5) ул. Челнокова, 1, Иркутск, Иркутская обл., Россия, 664005&#10;6) Б. Грузинская ул., 69, Москва, Россия, 125047&#10;">
+               <effect>
+                  <Blend />
+               </effect>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextArea>
 
             </children>
         </AnchorPane>

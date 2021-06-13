@@ -10,12 +10,26 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+
 public class Maps {
     @FXML
     private Button btnBack;
+    @FXML
+    private Button btnLoad;
+    @FXML
+    void openHtml() throws IOException {
+        btnLoad.setOnAction(event -> {
+        String url = "file:///C:/Users/Алина/Downloads/academyBySeva/src/sample/totalmap.html";
+            try {
+                java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
+            } catch (IOException exception) {
+                exception.printStackTrace();
+            }
+        });
+    }
 
     @FXML
-    void backToOffice() {
+    void backToOffice() throws IOException {
         btnBack.setOnAction(event -> {
             Stage stage = (Stage) btnBack.getScene().getWindow();
             stage.close();

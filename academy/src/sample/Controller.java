@@ -11,8 +11,10 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.regex.Pattern;
 
 public class Controller {
+    Pattern log = Pattern.compile("([\\S]+|[^а-яёА-ЯЁ]+)");
     @FXML
     private Button btnLog;
     @FXML
@@ -71,6 +73,22 @@ public class Controller {
                 stage.setTitle("Регистрация");
                 stage.setScene(new Scene(root1));
                 stage.show();
+        });
+    }
+    @FXML
+    void checkLogin(){
+        logIn.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!log.matcher(newValue).matches()) logIn.setText(oldValue);
+            logIn.setText(newValue.replaceAll("[а-яёА-ЯЁ]+", ""));
+            logIn.setText(newValue.replaceAll(" ", ""));
+        });
+    }
+    @FXML
+    void checkPass(){
+        password.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!log.matcher(newValue).matches()) password.setText(oldValue);
+            password.setText(newValue.replaceAll(" ", ""));
+            password.setText(newValue.replaceAll("[а-яёА-ЯЁ]+", ""));
         });
     }
     public String getLogIn() {
