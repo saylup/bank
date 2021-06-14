@@ -18,19 +18,16 @@ public class Maps {
     private Button btnLoad;
     @FXML
     void openHtml() throws IOException {
-        btnLoad.setOnAction(event -> {
-        String url = "file:///C:/Users/Алина/Downloads/academyBySeva/src/sample/totalmap.html";
+        String url = "file:///C:/Users/Всеволод/Desktop/academyBySeva/src/sample/totalmap.html";
             try {
                 java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
             } catch (IOException exception) {
                 exception.printStackTrace();
             }
-        });
     }
 
     @FXML
     void backToOffice() throws IOException {
-        btnBack.setOnAction(event -> {
             Stage stage = (Stage) btnBack.getScene().getWindow();
             stage.close();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/sample/office.fxml"));
@@ -45,6 +42,5 @@ public class Maps {
             stage.setTitle("Личный кабинет");
             stage.setScene(new Scene(root1));
             stage.show();
-        });
     }
 }

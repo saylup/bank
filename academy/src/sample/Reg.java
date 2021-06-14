@@ -32,7 +32,6 @@ public class Reg{
 
     @FXML
     void registration() {
-        btnRegister.setOnAction(event -> {
             if ((getPassSeries().length() < 4 || getPassNum().length() < 6 || getPin().length() < 4 || getPin().isEmpty() == true || getSurName().isEmpty() == true || getName().isEmpty() == true || getPatronymic().isEmpty() == true || getPassSeries().isEmpty() == true || getPassNum().isEmpty() == true || getLogin().isEmpty() == true || getPass().isEmpty()) == true) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Warring");
@@ -42,23 +41,22 @@ public class Reg{
                 System.out.println(getPass());
 
             }
-        });
     }
 
     @FXML
     void checkPin(){
-                pin.textProperty().addListener((observable, oldValue, newValue) -> {
-                    if (!numeric.matcher(newValue).matches()) pin.setText(oldValue);
-                    if (pin.getLength()>4) pin.setText(oldValue);
-                });
+        pin.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!numeric.matcher(newValue).matches()) pin.setText(oldValue);
+            if (pin.getLength()>4) pin.setText(oldValue);
+        });
     }
 
     @FXML
     void checkNum(){
-            passNum.textProperty().addListener((observable, oldValue, newValue) -> {
-                if (!numeric.matcher(newValue).matches()) passNum.setText(oldValue);
-                if (passNum.getLength()>6) passNum.setText(oldValue);
-            });
+        passNum.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!numeric.matcher(newValue).matches()) passNum.setText(oldValue);
+            if (passNum.getLength()>6) passNum.setText(oldValue);
+        });
     }
     @FXML
     void checkSeries(){

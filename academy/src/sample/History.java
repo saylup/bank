@@ -23,7 +23,6 @@ public class History {
     private TreeTableColumn colOperation;
     @FXML
     void backToOffice() {
-        btnBack.setOnAction(event -> {
             Stage stage = (Stage) btnBack.getScene().getWindow();
             stage.close();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/sample/office.fxml"));
@@ -38,6 +37,5 @@ public class History {
             stage.setTitle("Личный кабинет");
             stage.setScene(new Scene(root1));
             stage.show();
-        });
     }
 }

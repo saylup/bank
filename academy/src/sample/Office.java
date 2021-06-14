@@ -43,7 +43,6 @@ public class Office {
     private Label numCard;
     @FXML
     void transactoin() {
-        butTrans.setOnAction(event -> {
             Stage stage = (Stage) butTrans.getScene().getWindow();
             stage.close();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/sample/transaction.fxml"));
@@ -58,12 +57,10 @@ public class Office {
             stage.setTitle("Перевод");
             stage.setScene(new Scene(root1));
             stage.show();
-        });
     }
 
     @FXML
     void history() {
-        btnHistory.setOnAction(event -> {
             Stage stage = (Stage) btnHistory.getScene().getWindow();
             stage.close();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/sample/history.fxml"));
@@ -78,12 +75,11 @@ public class Office {
             stage.setTitle("История операций");
             stage.setScene(new Scene(root1));
             stage.show();
-        });
     }
+
 
     @FXML
     void maps() {
-        butnAutomats.setOnAction(event -> {
             Stage stage = (Stage) butnAutomats.getScene().getWindow();
             stage.close();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/sample/maps.fxml"));
@@ -98,6 +94,23 @@ public class Office {
             stage.setTitle("Карты");
             stage.setScene(new Scene(root1));
             stage.show();
-        });
+    }
+
+    @FXML
+    void countCredit() {
+            Stage stage = (Stage) btnCountCredit.getScene().getWindow();
+            stage.close();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/sample/countCredit.fxml"));
+            Parent root1 = null;
+            try {
+                root1 = (Parent) fxmlLoader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Рассчёт кредита");
+            stage.setScene(new Scene(root1));
+            stage.show();
     }
 }

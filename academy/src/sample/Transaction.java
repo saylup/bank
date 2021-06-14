@@ -25,7 +25,6 @@ public class Transaction {
     private TextField sumTransaction;
     @FXML
     void backToOffice() {
-        btnBack.setOnAction(event -> {
             Stage stage = (Stage) btnBack.getScene().getWindow();
             stage.close();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/sample/office.fxml"));
@@ -40,7 +39,6 @@ public class Transaction {
             stage.setTitle("Личный кабинет");
             stage.setScene(new Scene(root1));
             stage.show();
-        });
     }
     @FXML
     void checkOwnNum(){
@@ -63,3 +61,4 @@ public class Transaction {
         });
     }
 }
+

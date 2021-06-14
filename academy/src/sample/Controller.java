@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.regex.Pattern;
 
 public class Controller {
-    Pattern log = Pattern.compile("([\\S]+|[^а-яёА-ЯЁ]+)");
+    Pattern log = Pattern.compile("([\\S]*|[^а-яёА-ЯЁ]*)");
     @FXML
     private Button btnLog;
     @FXML
@@ -26,7 +26,6 @@ public class Controller {
 
     @FXML
     void login() {
-        btnLog.setOnAction(event -> {
             if (getLogIn().isEmpty()==true || getPassword().isEmpty()==true){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Warring");
@@ -53,27 +52,24 @@ public class Controller {
                 stage.setScene(new Scene(root1));
                 stage.show();
             }
-        });
     }
 
     @FXML
     void registration() {
-        btnReg.setOnAction(event -> {
-                Stage stage = (Stage) btnLog.getScene().getWindow();
-                stage.close();
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/sample/reg.fxml"));
-                Parent root1 = null;
-                try {
-                    root1 = (Parent) fxmlLoader.load();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                stage = new Stage();
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.setTitle("Регистрация");
-                stage.setScene(new Scene(root1));
-                stage.show();
-        });
+            Stage stage = (Stage) btnLog.getScene().getWindow();
+            stage.close();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/sample/reg.fxml"));
+            Parent root1 = null;
+            try {
+                root1 = (Parent) fxmlLoader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Регистрация");
+            stage.setScene(new Scene(root1));
+            stage.show();
     }
     @FXML
     void checkLogin(){
