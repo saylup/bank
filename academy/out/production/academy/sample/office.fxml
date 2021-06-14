@@ -4,31 +4,36 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #2F4F4F;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Office">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="408.0" prefWidth="698.0" style="-fx-background-color: #2F4F4F;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Office">
     <children>
         <AnchorPane layoutY="58.0" prefHeight="350.0" prefWidth="700.0" style="-fx-background-color: #fafafa;">
             <children>
-                <Label layoutX="255.0" layoutY="14.0" text="Личный кабинет">
+                <Label layoutX="254.0" layoutY="9.0" text="Личный кабинет">
                     <font>
                         <Font size="25.0" />
                     </font></Label>
-                <Label layoutX="253.0" layoutY="77.0" text="Баланс:" />
-                <Label fx:id="numBill" layoutX="221.0" layoutY="113.0" prefHeight="17.0" prefWidth="74.0" text="Счёт № " />
+                <Label layoutX="40.0" layoutY="77.0" text="Баланс:" />
+                <Label fx:id="numBill" layoutX="40.0" layoutY="113.0" prefHeight="17.0" prefWidth="51.0" text="Счёт № " />
                 <Button fx:id="butTrans" layoutX="232.0" layoutY="305.0" mnemonicParsing="false" onAction="#transactoin" prefHeight="31.0" prefWidth="84.0" style="-fx-background-color: #A52A2A;" text="Перевод" textFill="WHITE" />
-            <Label fx:id="person" layoutX="336.0" layoutY="50.0" text="ФИО" />
-            <Label fx:id="numCard" layoutX="216.0" layoutY="145.0" text="Карта № " />
-            <Label layoutX="254.0" layoutY="175.0" text="Кредит" />
-            <Button fx:id="btnCountCredit" layoutX="311.0" layoutY="171.0" mnemonicParsing="false" onAction="#countCredit" prefHeight="25.0" prefWidth="172.0" text="Расчитать и Оформить" />
-            <TextField fx:id="balanceSum" editable="false" layoutX="310.0" layoutY="73.0" prefHeight="25.0" prefWidth="172.0" />
-            <TextField fx:id="balanceBill" editable="false" layoutX="310.0" layoutY="109.0" prefHeight="25.0" prefWidth="172.0" />
-            <TextField fx:id="balanceCard" editable="false" layoutX="310.0" layoutY="141.0" prefHeight="25.0" prefWidth="172.0" />
-            <Label layoutX="177.0" layoutY="235.0" text="Накопительный счёт:" />
-            <Label layoutX="197.0" layoutY="268.0" text="Брокерский счёт:" />
-            <TextField fx:id="balanceCredit" editable="false" layoutX="310.0" layoutY="202.0" prefHeight="25.0" prefWidth="172.0" />
-            <TextField fx:id="balanceSaving" editable="false" layoutX="310.0" layoutY="231.0" prefHeight="25.0" prefWidth="172.0" />
-            <TextField fx:id="balanceBrokerage" editable="false" layoutX="310.0" layoutY="264.0" prefHeight="25.0" prefWidth="172.0" />
+            <Label fx:id="person" layoutX="336.0" layoutY="37.0" text="ФИО" />
+            <Label fx:id="numCard" layoutX="35.0" layoutY="145.0" text="Карта № " />
+            <Label layoutX="505.0" layoutY="54.0" text="Кредит" />
+            <Button fx:id="btnCountCredit" layoutX="438.0" layoutY="193.0" mnemonicParsing="false" onAction="#countCredit" prefHeight="25.0" prefWidth="172.0" text="Расчитать и Оформить" />
+            <TextField fx:id="balanceSum" editable="false" layoutX="91.0" layoutY="73.0" prefHeight="25.0" prefWidth="172.0" text="0" />
+            <TextField fx:id="balanceBill" editable="false" layoutX="91.0" layoutY="109.0" prefHeight="25.0" prefWidth="172.0" text="0" />
+            <TextField fx:id="balanceCard" editable="false" layoutX="91.0" layoutY="141.0" prefHeight="25.0" prefWidth="172.0" text="0" />
+            <Label layoutX="119.0" layoutY="175.0" text="Накопительный счёт:" />
+            <TextField fx:id="balanceCredit" editable="false" layoutX="439.0" layoutY="74.0" prefHeight="25.0" prefWidth="172.0" text="0" />
+            <TextField fx:id="balanceSaving" editable="false" layoutX="91.0" layoutY="193.0" prefHeight="25.0" prefWidth="172.0" text="0" />
             <Button fx:id="btnHistory" layoutX="336.0" layoutY="305.0" mnemonicParsing="false" onAction="#history" prefHeight="31.0" prefWidth="84.0" style="-fx-background-color: #A52A2A;" text="История" textAlignment="CENTER" textFill="WHITE" />
             <Button fx:id="butnAutomats" layoutX="440.0" layoutY="305.0" mnemonicParsing="false" onAction="#maps" prefHeight="31.0" prefWidth="84.0" style="-fx-background-color: #A52A2A;" text="Банкоматы" textFill="WHITE" />
+            <Button fx:id="btnCreateSave" layoutX="91.0" layoutY="227.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="172.0" text="Создать&#10;" />
+            <Button fx:id="btnExit" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#exit" style="-fx-background-color: #A52A2A;" text="Выйти" textFill="WHITE" />
+            <TextField fx:id="creditNum" editable="false" layoutX="438.0" layoutY="109.0" prefHeight="25.0" prefWidth="172.0" text="0" />
+            <TextField fx:id="creditCard" editable="false" layoutX="438.0" layoutY="141.0" prefHeight="25.0" prefWidth="172.0" text="0" />
+            <Label layoutX="389.0" layoutY="77.0" text="Баланс" />
+            <Label layoutX="387.0" layoutY="113.0" text="Счёт №" />
+            <Label layoutX="384.0" layoutY="145.0" text="Карта №" />
             </children>
         </AnchorPane>
         <Label layoutX="8.0" layoutY="14.0" text="Самый крутой банк" textFill="#f2f2f2">

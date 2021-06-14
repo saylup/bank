@@ -33,6 +33,7 @@
                 <TextField fx:id="name" layoutX="298.0" layoutY="76.0" onKeyTyped="#checkName" promptText="Имя" />
                 <Label layoutX="235.0" layoutY="275.0" text="Пин-код" />
                 <TextField fx:id="pin" layoutX="298.0" layoutY="271.0" onKeyTyped="#checkPin" promptText="Пин-код" />
+            <Button fx:id="btnBack" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" onAction="#backToLogIn" style="-fx-background-color: #A52A2A;" text="Назад" textFill="WHITE" />
             </children>
         </AnchorPane>
         <Label layoutX="8.0" layoutY="14.0" text="Самый крутой банк" textFill="#f2f2f2">

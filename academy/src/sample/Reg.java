@@ -1,10 +1,17 @@
 package sample;
 
+import com.google.gson.Gson;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.regex.Pattern;
 
 public class Reg{
@@ -29,18 +36,56 @@ public class Reg{
     private TextField pin;
     @FXML
     private Button btnRegister;
-
+    @FXML
+    private Button btnBack;
     @FXML
     void registration() {
-            if ((getPassSeries().length() < 4 || getPassNum().length() < 6 || getPin().length() < 4 || getPin().isEmpty() == true || getSurName().isEmpty() == true || getName().isEmpty() == true || getPatronymic().isEmpty() == true || getPassSeries().isEmpty() == true || getPassNum().isEmpty() == true || getLogin().isEmpty() == true || getPass().isEmpty()) == true) {
+            if ((getPassSeries().length() < 4 || getPassNum().length() < 6 || getPin().length() < 4 || getPin().isEmpty() || getSurName().isEmpty() || getName().isEmpty() || getPatronymic().isEmpty() || getPassSeries().isEmpty() || getPassNum().isEmpty() || getLogin().isEmpty() || getPass().isEmpty())) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Warring");
+                alert.setTitle("Ошибка!");
                 alert.setHeaderText(null);
                 alert.setContentText("Не все поля заполнены!");
                 alert.showAndWait();
                 System.out.println(getPass());
-
             }
+            else{
+                Customer cust = new Customer(name.getText(), surName.getText(), patronymic.getText(), Integer.parseInt(passSeries.getText()), Integer.parseInt(passNum.getText()), login.getText(), pass.getText());
+                Gson gson = new Gson();
+                try {
+                    String response = Request.addRequest(gson.toJson(cust));
+                    if (response.equals("success")){
+                        System.out.println("Оп-оп-оп Живём живём");
+                    }
+                    else{
+                        System.out.println("Веселая сова сдохла");
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Информационное сообщение");
+                alert.setHeaderText(null);
+                alert.setContentText("Запрос на регистрацию отправлен.");
+                alert.showAndWait();
+                System.out.println(getPass());
+            }
+    }
+    @FXML
+    void backToLogIn() {
+        Stage stage = (Stage) btnBack.getScene().getWindow();
+        stage.close();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/sample/sample.fxml"));
+        Parent root1 = null;
+        try {
+            root1 = (Parent) fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle("LogIn");
+        stage.setScene(new Scene(root1));
+        stage.show();
     }
 
     @FXML
@@ -100,6 +145,8 @@ public class Reg{
             pass.setText(newValue.replaceAll("[а-яёА-ЯЁ]+", ""));
         });
     }
+
+
     public String getSurName() {
         return surName.getText();
     }

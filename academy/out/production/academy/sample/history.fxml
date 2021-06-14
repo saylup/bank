@@ -13,12 +13,14 @@
                         <Font size="25.0" />
                     </font></Label>
                 <Button fx:id="btnBack" layoutX="16.0" layoutY="302.0" mnemonicParsing="false" onAction="#backToOffice" prefHeight="25.0" prefWidth="56.0" style="-fx-background-color: #A52A2A;" text="Назад" textFill="WHITE" />
-            <TreeTableView fx:id="table" layoutX="44.0" layoutY="75.0" prefHeight="204.0" prefWidth="622.0">
+            <TableView fx:id="table" layoutX="65.0" layoutY="75.0" prefHeight="200.0" prefWidth="570.0">
               <columns>
-                <TreeTableColumn fx:id="colDate" prefWidth="120.0" text="Дата" />
-                <TreeTableColumn fx:id="colOperation" prefWidth="501.0" text="Операция" />
+                <TableColumn fx:id="colDate" prefWidth="142.0" text="Дата" />
+                <TableColumn fx:id="colSum" prefWidth="167.0" text="Сумма" />
+                  <TableColumn fx:id="colStatus" prefWidth="133.0" text="Статус" />
+                  <TableColumn fx:id="colTime" prefWidth="126.0" text="Время" />
               </columns>
-            </TreeTableView>
+            </TableView>
             </children>
         </AnchorPane>
         <Label layoutX="8.0" layoutY="14.0" text="Самый крутой банк" textFill="#f2f2f2">

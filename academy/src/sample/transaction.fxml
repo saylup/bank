@@ -15,7 +15,7 @@
                 <Label layoutX="189.0" layoutY="124.0" text="Счёт зачисления:" />
                 <Label layoutX="201.0" layoutY="81.0" text="Счёт списания:" />
                 <TextField fx:id="numOwnCard" layoutX="298.0" layoutY="77.0" onKeyTyped="#checkOwnNum" prefHeight="25.0" prefWidth="157.0" promptText="Номер счёта списания" />
-                <Button fx:id="butTransaction" layoutX="310.0" layoutY="222.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="133.0" style="-fx-background-color: #A52A2A;" text="Перевести" textFill="WHITE">
+                <Button fx:id="butTransaction" layoutX="310.0" layoutY="222.0" mnemonicParsing="false" onAction="#translate" prefHeight="17.0" prefWidth="133.0" style="-fx-background-color: #A52A2A;" text="Перевести" textFill="WHITE">
                     <font>
                         <Font size="15.0" />
                     </font>

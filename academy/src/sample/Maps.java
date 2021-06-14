@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 
 
@@ -18,7 +19,10 @@ public class Maps {
     private Button btnLoad;
     @FXML
     void openHtml() throws IOException {
-        String url = "file:///C:/Users/Всеволод/Desktop/academyBySeva/src/sample/totalmap.html";
+        File currentDirectory = new File(new File(".").getAbsolutePath());
+        String url = "file:///" + currentDirectory.getCanonicalPath()+"\\src\\sample\\totalmap.html";
+        url = url.replaceAll("\\\\", "/");
+        System.out.println(url);
             try {
                 java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
             } catch (IOException exception) {

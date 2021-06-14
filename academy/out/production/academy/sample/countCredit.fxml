@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2F4F4F;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.CountCredit">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="699.0" style="-fx-background-color: #2F4F4F;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.CountCredit">
     <children>
         <AnchorPane layoutY="57.0" prefHeight="350.0" prefWidth="700.0" style="-fx-background-color: #fafafa;">
             <children>
@@ -14,7 +14,7 @@
                     </font></Label>
                 <Label layoutX="167.0" layoutY="179.0" text="Разрешенный лимит" />
                 <Label layoutX="121.0" layoutY="122.0" text="Среднемесячная зарплата за" />
-                <TextField fx:id="salary" layoutX="298.0" layoutY="127.0" onAction="#checkSalary" prefHeight="25.0" prefWidth="157.0" promptText="Введите сумму" />
+                <TextField fx:id="salary" layoutX="298.0" layoutY="127.0" onKeyTyped="#checkSalary" prefHeight="25.0" prefWidth="157.0" promptText="Введите сумму" />
                 <TextField fx:id="limit" editable="false" layoutX="298.0" layoutY="175.0" prefHeight="25.0" prefWidth="157.0" />
                 <Button fx:id="btnCoint" layoutX="298.0" layoutY="221.0" mnemonicParsing="false" onAction="#counting" prefHeight="17.0" prefWidth="133.0" style="-fx-background-color: #A52A2A;" text="Рассчитать" textFill="WHITE">
                     <font>
@@ -24,13 +24,13 @@
             <Button fx:id="btnBack" layoutX="14.0" layoutY="299.0" mnemonicParsing="false" onAction="#backToOffice" style="-fx-background-color: #A52A2A;" text="Назад" textFill="WHITE" />
             <Label layoutX="138.0" layoutY="86.0" />
             <Label layoutX="162.0" layoutY="139.0" text="последние 12 месяцев" />
-            <Button fx:id="butMake" layoutX="438.0" layoutY="296.0" mnemonicParsing="false" onAction="#makeBill" prefHeight="31.0" prefWidth="157.0" style="-fx-background-color: #A52A2A;" text="Оформить кредит" textFill="WHITE">
+            <Button fx:id="butMake" layoutX="529.0" layoutY="296.0" mnemonicParsing="false" onAction="#makeBill" prefHeight="31.0" prefWidth="157.0" style="-fx-background-color: #A52A2A;" text="Оформить кредит" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
             <Label layoutX="148.0" layoutY="87.0" text="Срок погашения кредита" />
-            <TextField fx:id="month" layoutX="298.0" layoutY="83.0" onAction="#checkMonth" prefHeight="25.0" prefWidth="157.0" promptText="Количество месяцев" />
+            <TextField fx:id="month" layoutX="298.0" layoutY="83.0" onKeyTyped="#checkMonth" prefHeight="25.0" prefWidth="157.0" promptText="Количество месяцев" />
             </children>
         </AnchorPane>
         <Label layoutX="8.0" layoutY="14.0" text="Самый крутой банк" textFill="#f2f2f2">
