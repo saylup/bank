@@ -1,5 +1,6 @@
 package sample;
 
+import com.google.gson.Gson;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -25,6 +26,31 @@ public class UpBalance {
     private TextField sum;
     @FXML
     private Button btnBack;
+    void dialogWindow(String name, String message){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(name);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+    @FXML
+    void initialize(){
+        try {
+            //String FIO =Controller.cust.getSurname() + " " + Controller.cust.getName() + " " + Controller.cust.getPatronymic();
+            //person.setText(FIO);
+            String response = Request.getAccount(Controller.getNumCard(), Controller.getPin());
+            if(!response.equals("Access denied") || !response.equals("Connection error")){
+                Account account = new Gson().fromJson(response, Account.class);
+                sumBill.setText(String.valueOf(account.getSum()));
+            }
+            else{
+                System.out.println("Веселая сова сдохла");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @FXML
     void checkSum(){
         sum.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -39,10 +65,17 @@ public class UpBalance {
     }
     @FXML
     void plusSum() {
-        int s;
-        s = Integer.parseInt(sum.getText())+Integer.parseInt(sumBill.getText());
-        sumBill.setText(String.valueOf(s));
+        try {
+            String str = Request.addMoney(Controller.getNumCard(), Controller.getPin(), Float.parseFloat(sum.getText()));
+            if(str.equals("success")){
+                dialogWindow("Внимание!", "Успешно.");
+                back();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
     @FXML
     void back() {
             Stage stage = (Stage) btnBack.getScene().getWindow();

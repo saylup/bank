@@ -13,7 +13,7 @@
             <Button fx:id="btnUpBalance" layoutX="91.0" layoutY="161.0" mnemonicParsing="false" onAction="#upBalance" text="Пополнить баланс" />
             <Button fx:id="btnDownBalance" layoutX="98.0" layoutY="206.0" mnemonicParsing="false" onAction="#downBalance" text="Снять наличные" />
             <Label layoutX="130.0" layoutY="46.0" text="Баланс:" />
-            <TextField editable="false" layoutX="76.0" layoutY="81.0" />
+            <TextField fx:id="Balanse" editable="false" layoutX="76.0" layoutY="81.0" />
             </children>
         </AnchorPane>
         <Label layoutX="14.0" layoutY="14.0" text="Банкомат" textFill="WHITE">

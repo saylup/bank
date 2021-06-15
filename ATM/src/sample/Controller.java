@@ -1,6 +1,7 @@
 package sample;
 
 
+import com.google.gson.Gson;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,12 +17,22 @@ import java.util.regex.Pattern;
 
 public class Controller {
     Pattern numeric = Pattern.compile("(\\d+\\d*)?");
+    static Customer cust;
+    static int numcard, Pin;
     @FXML
     private TextField numCard;
     @FXML
     private TextField pin;
     @FXML
     private Button btnLogIn;
+
+    void dialogWindow(String name, String message){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(name);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
     @FXML
     void checkPin(){
         pin.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -38,35 +49,47 @@ public class Controller {
     }
     @FXML
     void logIn() {
-            if (getNumCard().isEmpty() == true || getPin().isEmpty()==true || getNumCard().length()<16 || getPin().length()<4) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Warring");
-                alert.setHeaderText(null);
-                alert.setContentText("Не все поля заполнены!");
-                alert.showAndWait();
-            }
-            else {
-                Stage stage = (Stage) btnLogIn.getScene().getWindow();
-                stage.close();
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/sample/office.fxml"));
-                Parent root1 = null;
-                try {
-                    root1 = (Parent) fxmlLoader.load();
-                } catch (IOException e) {
-                    e.printStackTrace();
+        String str = null;
+        if (numCard.getText().length()==0 || pin.getText().length()==0){
+            dialogWindow("Ошибка!", "Не все поля заполнены!");
+        }
+        else {
+            numcard = Integer.parseInt(numCard.getText());
+            Pin = Integer.parseInt(pin.getText());
+
+            try {
+                str = Request.getAccount(Integer.parseInt(numCard.getText()), Integer.parseInt(pin.getText()));
+                if (!str.equals("Access denied") && !str.equals("Server Error")) {
+                    System.out.println("Веселая сова жива");
+                    cust = new Gson().fromJson(str, Customer.class);
+                    Stage stage = (Stage) btnLogIn.getScene().getWindow();
+                    stage.close();
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/sample/office.fxml"));
+                    Parent root1 = null;
+                    try {
+                        root1 = (Parent) fxmlLoader.load();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    stage = new Stage();
+                    stage.initModality(Modality.APPLICATION_MODAL);
+                    stage.setTitle("Банкомат");
+                    stage.setScene(new Scene(root1));
+                    stage.show();
+                } else if (numCard.getText().isEmpty() || pin.getText().isEmpty() || numCard.getText().length() < 16 || pin.getText().length() < 4) {
+                    dialogWindow("Внимание!", "Не все поля заполнены!");
+                    System.out.println("Веселая сова сдохла");
                 }
-                stage = new Stage();
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.setTitle("Банкомат");
-                stage.setScene(new Scene(root1));
-                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+        }
     }
-    public String getNumCard() {
-        return numCard.getText();
+    public static int getNumCard() {
+        return numcard;
     }
 
-    public String getPin() {
-        return pin.getText();
+    public static int getPin() {
+        return Pin;
     }
 }
