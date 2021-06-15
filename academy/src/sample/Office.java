@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -20,7 +21,7 @@ public class Office {
     @FXML
     public TextField balanceSum = new TextField();
     @FXML
-    public TextField balanceBill = new TextField();;
+    public TextField balanceBill = new TextField();
     @FXML
     private TextField balanceCard;
     @FXML
@@ -32,9 +33,15 @@ public class Office {
     @FXML
     private TextField creditCard;
     @FXML
+    private TextField pinDebit;
+    @FXML
+    private TextField pinCredit;
+    @FXML
+    private TextField numSaved;
+    @FXML
     private Label person;
     @FXML
-    private Button btnCreateCredit;
+    private Button btnCreateSave;
     @FXML
     private Button btnCountCredit;
     @FXML
@@ -48,7 +55,13 @@ public class Office {
     @FXML
     private Label numCard;
     String str = null;
-
+    void dialogWindow(String name, String message){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(name);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
     @FXML
     void initialize(){
         write();
@@ -143,29 +156,49 @@ public class Office {
             stage.show();
     }
 
-    void write(){
-        //Ещё надо ФИО добавить
+    @FXML
+    void createSave(){
+        String responde = null;
         try {
-            //System.out.println(Controller.cust.getName());
+            responde = Request.addAccount(Controller.getLogIn(), Controller.getPassword(), "save",0);
+            if(responde.equals("success")){
+                dialogWindow("Информационное сообщение", "Оформлен");
+            }
+            else {
+                dialogWindow("Информационное сообщение", "Накопительный счёт уже оформлен.");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    void write(){
+        try {
+            String FIO =Controller.cust.getSurname() + " " + Controller.cust.getName() + " " + Controller.cust.getPatronymic();
+            person.setText(FIO);
             String response = Request.getAccounts(Controller.getLogIn(), Controller.getPassword());
             ArrayList<Account> yourArray = new Gson().fromJson(response, new TypeToken<List<Account>>(){}.getType());
+
             if(!response.equals("Access denied") || !response.equals("Connection error")){
-                System.out.println(response);
                 for(Account account:yourArray){
-                    System.out.println(account.getType());
                     if(account.getType().equals("debit")){
                         balanceSum.setText(String.valueOf(account.getSum()));
                         balanceBill.setText(String.valueOf(account.getNumber()));
                         balanceCard.setText("4081 7819 1230 00"+String.valueOf(account.getNumberCard()));
+                        pinDebit.setText(String.valueOf(account.getPinCode()));
+                        System.out.println(account.getPinCode());
                     }
                     else if(account.getType().equals("credit")){
                         balanceCredit.setText(String.valueOf(account.getSum()));
                         creditNum.setText(String.valueOf(account.getNumber()));
                         creditCard.setText("4081 7819 1230 00"+String.valueOf(account.getNumberCard()));
-                        //Карта
+                        pinCredit.setText(String.valueOf(account.getPinCode()));
+                        System.out.println(account.getPinCode());
                     }
                     else if(account.getType().equals("save")){
                         balanceSaving.setText(String.valueOf(account.getSum()));
+                        numSaved.setText(String.valueOf(account.getNumber()));
+                        System.out.println(account.getNumber());
                     }
                 }
             }

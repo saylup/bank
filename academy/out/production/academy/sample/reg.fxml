@@ -31,8 +31,6 @@
                 <Label layoutX="233.0" layoutY="109.0" text="Отчество" />
                 <TextField fx:id="patronymic" layoutX="298.0" layoutY="105.0" onKeyTyped="#checkPatr" promptText="Отчество" />
                 <TextField fx:id="name" layoutX="298.0" layoutY="76.0" onKeyTyped="#checkName" promptText="Имя" />
-                <Label layoutX="235.0" layoutY="275.0" text="Пин-код" />
-                <TextField fx:id="pin" layoutX="298.0" layoutY="271.0" onKeyTyped="#checkPin" promptText="Пин-код" />
             <Button fx:id="btnBack" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" onAction="#backToLogIn" style="-fx-background-color: #A52A2A;" text="Назад" textFill="WHITE" />
             </children>
         </AnchorPane>

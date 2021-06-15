@@ -27,19 +27,19 @@ public class Controller {
     private TextField logIn;
     @FXML
     private TextField password;
-
-
-
+    void dialogWindow(String name, String message){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(name);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
     @FXML
     void login() {
         login = logIn.getText();
         pass = password.getText();
             if (getLogIn().isEmpty()==true || getPassword().isEmpty()==true){
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Warring");
-                alert.setHeaderText(null);
-                alert.setContentText("Не все поля заполнены!");
-                alert.showAndWait();
+                dialogWindow("Внимание!","Не все поля заполнены!" );
             }
             else
             {
@@ -66,11 +66,7 @@ public class Controller {
                         stage.show();
                     }
                     else{
-                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.setTitle("Ошибка!");
-                        alert.setHeaderText(null);
-                        alert.setContentText("Логин и/или пароль введён неверно!");
-                        alert.showAndWait();
+                        dialogWindow("Ошибка!","Логин и/или пароль введён неверно!");
                         System.out.println("Веселая сова сдохла");
                     }
                 } catch (IOException e) {

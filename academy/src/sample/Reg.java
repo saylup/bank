@@ -33,19 +33,20 @@ public class Reg{
     @FXML
     private TextField pass;
     @FXML
-    private TextField pin;
-    @FXML
     private Button btnRegister;
     @FXML
     private Button btnBack;
+    void dialogWindow(String name, String message){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(name);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
     @FXML
     void registration() {
-            if ((getPassSeries().length() < 4 || getPassNum().length() < 6 || getPin().length() < 4 || getPin().isEmpty() || getSurName().isEmpty() || getName().isEmpty() || getPatronymic().isEmpty() || getPassSeries().isEmpty() || getPassNum().isEmpty() || getLogin().isEmpty() || getPass().isEmpty())) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Ошибка!");
-                alert.setHeaderText(null);
-                alert.setContentText("Не все поля заполнены!");
-                alert.showAndWait();
+            if ((getPassSeries().length() < 4 || getPassNum().length() < 6  || getSurName().isEmpty() || getName().isEmpty() || getPatronymic().isEmpty() || getPassSeries().isEmpty() || getPassNum().isEmpty() || getLogin().isEmpty() || getPass().isEmpty())) {
+                dialogWindow("Ошибка!","Не все поля заполнены!");
                 System.out.println(getPass());
             }
             else{
@@ -62,11 +63,7 @@ public class Reg{
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Информационное сообщение");
-                alert.setHeaderText(null);
-                alert.setContentText("Запрос на регистрацию отправлен.");
-                alert.showAndWait();
+                dialogWindow("Информационное сообщение","Запрос на регистрацию отправлен.");
                 System.out.println(getPass());
             }
     }
@@ -88,13 +85,6 @@ public class Reg{
         stage.show();
     }
 
-    @FXML
-    void checkPin(){
-        pin.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (!numeric.matcher(newValue).matches()) pin.setText(oldValue);
-            if (pin.getLength()>4) pin.setText(oldValue);
-        });
-    }
 
     @FXML
     void checkNum(){
@@ -175,5 +165,4 @@ public class Reg{
         return pass.getText();
     }
 
-    public String getPin() {return pin.getText();}
 }

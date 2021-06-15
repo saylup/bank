@@ -26,7 +26,13 @@ public class Transaction {
     private TextField sumTransaction;
     @FXML
     private Button butTransaction;
-
+    void dialogWindow(String name, String message){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(name);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
     @FXML
     void backToOffice() {
             Stage stage = (Stage) btnBack.getScene().getWindow();
@@ -70,11 +76,7 @@ public class Transaction {
         try {
             String response, step;
             if(numCard.getText().length()<20 || numOwnCard.getText().length()<20 || sumTransaction.getText().length()==0){
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Ошибка!");
-                alert.setHeaderText(null);
-                alert.setContentText("Введены некоректные данные!");
-                alert.showAndWait();
+                dialogWindow("Ошибка!", "Введены некоректные данные!");
             }
             else {
                 response = Request.internalTransfer(Controller.getLogIn(), Controller.getPassword(), Integer.parseInt(numOwnCard.getText().substring(18)),  //Между своими счетам
@@ -85,26 +87,14 @@ public class Transaction {
 
                 if (step.equals("success")) {
                     System.out.println("Перевод done");
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Информационное сообщение");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Перевод выполнен.");
-                    alert.showAndWait();
-                    System.out.println("Сова Богатая");
+                    dialogWindow("Информационное сообщение", "Заявка на перевод отправлена.");
+                    System.out.println("Сова очень Богатая");
                 } else if (response.equals("success")) {
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Информационное сообщение");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Заявка на перевод отправлена.");
-                    alert.showAndWait();
+                    dialogWindow("Информационное сообщение", "Перевод выполнен.");
                     System.out.println("Сова Богатая");
                 }
                 else {
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Ошибка!");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Введены некоректные данные!");
-                    alert.showAndWait();
+                    dialogWindow("Ошибка!", "Введены некоректные данные!");
                 }
             }
         } catch (IOException e) {
